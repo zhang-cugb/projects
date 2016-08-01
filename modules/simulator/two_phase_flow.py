@@ -886,7 +886,7 @@ class ImplicitTwoPhase:
             # Print message to show progress of simulation.
             message = 'Solving timestep {:<2d} / {:<2d} \t {:.3f} days'.format(
                 k+1, timesteps.size, timesteps[:k].sum()/u.day)
-            print(message)
+            #print(message)
             # Select timestep
             dt = timesteps[k]  
 
@@ -1076,7 +1076,7 @@ def NewRaph( f, x0,  tol , max_iter, linear_solver):
         error = np.linalg.norm(x-x0)/np.linalg.norm(x)
         # Print message to show status
         message = ' \t Newton-Raphson solver : {:2d}/{:2d}. Error: {:.2E}'.format(k + 1, max_iter, error)
-        print(message)
+        #print(message)
         if  error < tol:
             break
         else:
