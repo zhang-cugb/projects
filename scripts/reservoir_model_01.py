@@ -4,8 +4,6 @@ from modules.simulator.simplots import *
 from modules.simulator.units import UnitRegistry
 import numpy as np
 
-# Set image folder path
-imgpath = ".\\images"
 # Units
 u = UnitRegistry()
 
@@ -155,3 +153,6 @@ source = np.zeros([grid.cellnumber * fluid.phasenumber, 1])
 source[22] = -150 * u.barrel / u.day
 source[36] = -170 * u.barrel / u.day
 
+# Initialize Fully Implicit Solver
+FIM = ImplicitTwoPhase(
+    grid, rock, fluid, wells, source, p_init, sw_init, boundary, gravity=True)
