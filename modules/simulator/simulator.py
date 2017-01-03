@@ -199,7 +199,8 @@ class LaggingCoefficients:
         while k < timesteps.size and timesteps[:k-1].sum() < maxtime:
             # Print message to show progress of simulation.
             message = 'Solving timestep {} / {}'.format(k+1, timesteps.size)
-            print(message)
+            nice_print(message)
+    
             #Select time step
             dt = timesteps[k]                 
 
@@ -208,7 +209,8 @@ class LaggingCoefficients:
                 
                 # Print message to show progress of simulation.
                 message = '\t Inner loop {} / {}'.format(innerk+1, max_inner_iter)
-                print(message)
+                nice_print(message)
+                
                 
                 # Compute well rate and well transmissibilities.
                 self.wells.update_wells(p_guess)
@@ -356,7 +358,8 @@ class ImplicitNumerical:
         for k in range(0,schedule.timesteps.size):
             # Print message to show progress of simulation.
             message = 'Solving timestep {} / {}'.format(k+1, schedule.timesteps.size)
-            print(message)
+            nice_print(message)
+            
             #Select time step
             dt = schedule.timesteps[k]        
             
@@ -478,7 +481,8 @@ class ImplicitAnalytic:
         for k in range(0,schedule.timesteps.size):
             # Print message to show progress of simulation.
             message = 'Solving timestep {:<2d} / {:<2d}'.format(k+1, schedule.timesteps.size)
-            print(message)
+            nice_print(message)
+            
             #Select timestep
             dt = schedule.timesteps[k]        
             
@@ -575,7 +579,8 @@ def newton_raphson_numerical( f, x0, tol, max_iter, eps, linear_solver = None):
         
         # Print message to show status
         message = ' \t Newton-Raphson solver : {:2d}/{:2d}. Error: {:.2E}'.format(k + 1, max_iter, error)
-        print(message)
+        nice_print(message)
+        
 
         if  error < tol:
             break
@@ -607,7 +612,8 @@ def newton_raphson_for_fully_implicit( f, x0,  tol , max_iter, linear_solver = N
         error = np.linalg.norm(x-x0)/np.linalg.norm(x)
         # Print message to show status
         message = ' \t Newton-Raphson solver : {:2d}/{:2d}. Error: {:.2E}'.format(k + 1, max_iter, error)
-        print(message)
+        nice_print(message)
+        
 
         if  error < tol:
             break
@@ -1563,6 +1569,11 @@ def jacobian_of_residual(grid, rock, fluid, wells,  gtx, gty, gtz, DZ, dt, p_old
     
     return J.tocsr()
 
+
+def nice_print(message):
+    sys.stdout.write("\r {}".format(message))
+    sys.stdout.flush()
+    return 
 
 def main():
     ''' It is run if this module is run. '''
