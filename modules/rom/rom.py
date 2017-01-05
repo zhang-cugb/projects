@@ -117,3 +117,7 @@ def plot_energy(S, filename):
 	plt.savefig('{}.png'.format(filename), bbox_inches='tight', dpi=DPI)
 	
 	return
+
+
+
+
