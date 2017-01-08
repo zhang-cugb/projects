@@ -17,7 +17,7 @@ u = UnitRegistry()
 # ----------------------------
 
 # GRID
-Nx, Ny, Nz = np.array([50, 200, 1])
+Nx, Ny, Nz = np.array([50, 100, 1])
 Sx, Sy, Sz = np.array([1, 1, 0.5]) * u.meter
 
 depth = np.hstack((Sz * 0 * np.ones([Nx * Ny, ])))
