@@ -30,19 +30,6 @@ def pod(snapshots, energy, maxbasis):
 	return Ur,Sr
 
 
-def deim():
-	'''Discrete Empirical Interpolation Method
-	'''
-	return
-
-
-def projection(A, x, b,  phi):
-	''' Project matrix A with basis phi
-	'''
-	Ar = phi * A
-	return Ar, xr, br
-
-
 def plot_basis(cell_values, nrows, ncols, grid, filename):
 	'''Plot and save a figure with the basis functions 
 	in the basis matrix corresponding to a single layer.
@@ -55,7 +42,7 @@ def plot_basis(cell_values, nrows, ncols, grid, filename):
 	layer_num = cell_values.shape[1]
 	DPI = 100
 	fig, axes = plt.subplots(nrows=int(nrows), ncols=int(ncols), dpi=DPI)
-	colormap = "plasma"
+	colormap = "inferno"
 	vmin = cell_values.min()
 	vmax = cell_values.max()
 	title = "Bases"
