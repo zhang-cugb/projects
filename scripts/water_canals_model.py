@@ -29,8 +29,7 @@ grid = uniformCartesianGrid(Nx, Ny, Nz, Sx, Sy, Sz, depth)
 LPERM = 1 * u.milli * u.darcy
 HPERM = 1000 * u.milli *u.darcy
 # Fill rock with low permeability 
-perm = LPERM * np.ones([grid.cellnumber, ]) 
-perm = np.random.rand(grid.cellnumber,) * perm
+perm = LPERM * np.ones([grid.cellnumber, ])
 # Create canals with the sin function
 A = grid.dim[0]/5
 b = 0.03 /grid.dim[1]
@@ -65,7 +64,7 @@ fluid = singleFluid(miu, rho, fvf, cf)
 
 
 # SCHEDULE
-timesteps = 0.01 * np.ones(200) *u.day
+timesteps = 0.02 * np.ones(500) *u.day
 sch = Schedule(timesteps)
 
 # SOURCE TERM
