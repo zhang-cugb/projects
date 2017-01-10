@@ -41,9 +41,9 @@ def plot_energy(S, filename):
     ax2 = fig.add_subplot(2, 1, 2)
     line = ax2.plot(cen, "o-", linewidth=1)
     ax2.axis([0, None, 90, 101])
-    plt.title("Cummulative Energy")
+    plt.title("Cumulative Energy")
     plt.xlabel("Basis vector number")
-    plt.ylabel("Cummulative Energy")
+    plt.ylabel("Cumulative Energy")
     plt.grid(True)
 
     plt.tight_layout()
