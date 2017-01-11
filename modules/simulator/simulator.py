@@ -162,7 +162,7 @@ class LaggingCoefficients:
         
 
     def solve(self, schedule, max_inner_iter = 5 , tol = 1E-6, 
-        linear_solver=None,  ATS = False ):
+        linear_solver = linalg.spsolve,  ATS = False ):
         '''Run the solver for the timesteps in the schedule.
         Arguments:
             schedule (object) : schedule
@@ -254,7 +254,8 @@ class LaggingCoefficients:
                 A , b = apply_boundary(self.grid, LHS, rhs, self.boundary, self.wells)
                 # SOLVE THE SYSTEM OF EQUATIONS
                 # Solve with sparse solver. Is faster, uses less memory.
-                p_new = linalg.spsolve(A, b)
+                #p_new = linalg.spsolve(A, b)
+                p_new = linear_solver(A,b)
 
                 # Break loop if relative error is less than the tolerance
                 relative_error = (np.linalg.norm(p_guess-p_new)/np.linalg.norm(p_guess)) 
